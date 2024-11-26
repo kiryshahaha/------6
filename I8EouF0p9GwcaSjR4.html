@@ -1,0 +1,217 @@
+<html><head><base href="." /><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Developer Business Card</title>
+<style>
+:root {
+  --primary: #2d3436;
+  --secondary: #0984e3;
+  --accent: #00b894;
+  --light: #dfe6e9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--primary);
+  color: var(--light);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.card {
+  background: #2d3436;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  width: 100%;
+  max-width: 600px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  padding: 2rem;
+  position: relative;
+}
+
+.photo-section {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--secondary);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0000001a;
+  font-size: 0.8rem;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+.info-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+h1 {
+  font-size: 1.8rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 1rem;
+  color: var(--secondary);
+  margin-bottom: 1rem;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.skill-tag {
+  background: var(--secondary);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+}
+
+.contact-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.contact-links a {
+  color: var(--light);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s;
+}
+
+.contact-links a:hover {
+  color: var(--accent);
+}
+
+.code-decoration {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-family: monospace;
+  opacity: 0.1;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 600px) {
+  .card {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .photo-section {
+    aspect-ratio: 16/9;
+  }
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+
+<div class="card">
+  <div class="photo-section">
+    <div class="photo-placeholder">
+      <img src='https://sun9-5.userapi.com/impg/4T_ySIDWyL8vhrMSWWwTjIYvq4w2vPb1lg0xiw/zQII5P09-x4.jpg?size=1020x1020&quality=95&sign=77acf5991cf14e4a21dd9beff500eccb&type=album' style="width: 100%; height: 100%;border-radius: 8px; "></img>
+    </div>
+  </div>  
+  
+  <div class="info-section">
+    <div>
+      <h1>Kirill Gushchin</h1>
+      <div class="title">Jun+ Frontend Developer</div>
+      <p>Transforming ideas into elegant code solutions.</p>
+    </div>
+    
+    <div class="skills">
+      <span class="skill-tag">JavaScript</span>
+      <span class="skill-tag">Matlab</span>
+      <span class="skill-tag">React</span>
+      <span class="skill-tag">Node.js</span>
+      <span class="skill-tag">React Native</span>
+      <span class="skill-tag">Type Script</span>
+    </div>
+    
+    <div class="contact-links">
+      <a href="https://github.com/kiryshahaha">
+        <i class="fab fa-github"></i>
+        <span>GitHub</span>
+      </a>
+      <a href="https://vk.com/id557833214">
+        <i class="fab fa-linkedin"></i>
+        <span>VK</span>
+      </a>
+      <a href="mailto:kirya-gushchin@list.ru">
+        <i class="fas fa-envelope"></i>
+        <span>Email</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="code-decoration">
+    while(alive) {<br>
+    &nbsp;&nbsp;code();<br>
+    &nbsp;&nbsp;coffee();<br>
+    }
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Add hover effect to card
+  const card = document.querySelector('.card');
+  
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const rotateX = (y - centerY) / 20;
+    const rotateY = -(x - centerX) / 20;
+    
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+  
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+  });
+});
+</script>
+
+</body></html>
